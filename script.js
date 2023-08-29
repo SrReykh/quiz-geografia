@@ -126,8 +126,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function errado () {
         console.warn('ERRADO');
+        alert("Alternativa ERRADA");
 
-        pontos -= 10;
+        pontos -= 500;
         refreshPoints(pontos);
 
         for (var i=0; i<places.length; i++) {
@@ -143,7 +144,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function correto () {
         console.info('CORRETO');
-        pontos += 10;
+        alert("Alternativa certa!");
+        pontos += 500;
         refreshPoints(pontos);
 
         for (var i=0; i<places.length; i++) {
