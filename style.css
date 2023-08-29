@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Gluten&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url("dinheiro.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    font-family: 'Gluten', cursive;
+}
+
+.container-principal {
+    width: 850px;
+    height: 550px;
+    background-color: rgba(255, 255, 255, 0.952);
+    border-radius: 20px;
+}
+
+.container-principal > h1 {
+    text-align: center;
+    font-size: 55px;
+}
+
+.perguntas {
+    margin-top: 50px;
+    margin-left: 40px;
+    text-align: left;
+    font-size: 40px;
+}
+
+.perguntas > p {
+    transition: 0.3s;
+}
+
+.perguntas-texto {
+    display: flex;
+    flex-direction: column;
+}
+
+.perguntas-texto > label {
+    margin-bottom: 25px;
+    transition: 0.3s;
+}
+
+.respostas > input[type=button] {
+    width: 100px;
+    height: 40px;
+    background-color: black;
+    color: white;
+    outline: none;
+    border: 1px solid white;
+    border-radius: 7px;
+    font-weight: bolder;
+    transition: 0.3s;    
+}
+
+.respostas > input[type=button]:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+label {
+    font-size: 20px;
+}
+
