@@ -114,58 +114,105 @@ const quiz = {
       ]
 }
 
+/**
+ * posição da pergunta no array 'quiz'
+ * 
+ * @type {number}
+ */
 var pos = (Math.floor(Math.random() * quiz.perguntas.length));
+
+/**
+ * posição da resposta certa entre A à D
+ * 
+ * @type {number}
+ */
 var copos = (Math.floor(Math.random() * 4));
+
+/**
+ * quantas perguntas passaram
+ * 
+ * @type {number}
+ */
+var vezes = 1;
+
 document.addEventListener('DOMContentLoaded', () => {
     var places = ['A', 'B', 'C', 'D'];
     var pontos = 0;
 
+    /**
+     * Gera um array com dois números aleatórios
+     * 
+     * @returns {array}
+     */
     function randomize() {
         return [(Math.floor(Math.random() * quiz.perguntas.length)), (Math.floor(Math.random() * 4))];
     }
 
+    /**
+     * Caso a resposta esteja errada
+     * 
+     * @fires addPoints(-500)
+     * @returns {void} replayQuiz(RANDOM, RANDOM)
+     */
     function errado () {
         console.warn('ERRADO');
         alert("Alternativa ERRADA");
 
-        pontos -= 500;
-        refreshPoints(pontos);
+        addPoints(-500);
 
         for (var i=0; i<places.length; i++) {
             document.getElementById('btn-' + places[i]).removeEventListener('click', correto, true);
             document.getElementById('btn-' + places[i]).removeEventListener('click', errado, true);
         }
 
-        pos = (Math.floor(Math.random() * quiz.perguntas.length));
-        copos = (Math.floor(Math.random() * 4));
+        let r = randomize();
+        pos = r[0];
+        copos = r[1];
+
+        vezes += 1;
 
         return replayQuiz(pos, copos);
     }
 
+    /**
+     * Caso a resposta esteja correta
+     * 
+     * @fires addPoints(500)
+     * @returns {void} replayQuiz(RANDOM, RANDOM)
+     */
     function correto () {
         console.info('CORRETO');
         alert("Alternativa certa!");
-        pontos += 500;
-        refreshPoints(pontos);
+
+        addPoints(500);
 
         for (var i=0; i<places.length; i++) {
             document.getElementById('btn-' + places[i]).removeEventListener('click', correto, true);
             document.getElementById('btn-' + places[i]).removeEventListener('click', errado, true);
         }
 
-        pos = (Math.floor(Math.random() * quiz.perguntas.length));
-        copos = (Math.floor(Math.random() * 4));
+        let r = randomize();
+        pos = r[0];
+        copos = r[1];
+
+        vezes += 1;
 
         return replayQuiz(pos, copos);
 
     }
 
+    /**
+     * Roda o quiz novamente
+     * 
+     * @param {number} posr posição da pergunta no array 'quiz'
+     * @param {number} coposr posição da resposta correta para a pergunta entre A à D
+     */
     function replayQuiz(posr, coposr) {
         var pacedpositions = [];
 
         var tries = 0;
 
-        document.getElementById('pergunta').innerHTML = quiz.perguntas[posr];
+        document.getElementById('pergunta').innerHTML = vezes.toString() + '. ' + quiz.perguntas[posr];
         document.getElementById(places[coposr]).innerHTML = places[coposr].toString() + ") " + quiz.respostas[posr];
         for (var i=0; i<places.length; i++) {
             document.getElementById('btn-' + places[i]).removeEventListener('click', correto, true);
@@ -184,7 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
             }
             // console.log(i, copos, pacedpositions, esp, tries);
-            console.log(posr, coposr);
+            // console.log(posr, coposr);
             
         }
 
@@ -201,28 +248,22 @@ document.addEventListener('DOMContentLoaded', () => {
     function refreshPoints(new_pontos) {
         document.getElementById('pontos').innerHTML = 'Pontuação: ' + new_pontos;
     }
-    
 
-    pos = (Math.floor(Math.random() * quiz.perguntas.length));
-    copos = (Math.floor(Math.random() * 4));
-
-    // document.getElementById('btn-' + places[i]).addEventListener('click', () => errado(), true);
-    // document.getElementById('btn-' + places[copos]).addEventListener('click', () => correto(), true);
-    // for (var i=0; i<places.length; i++) {
-    //     if (i != copos) {
-    //         document.getElementById('btn-' + places[i]).addEventListener('click', () => errado());
-    //     }
-    // }
+    /**
+    * Adiciona algébricamente a pontuação do jogador.
+    *
+    * @param      {number} diff Diferença
+    * @returns    {void} refreshPoints
+    */
+    function addPoints(diff) {
+      pontos = ((pontos) + (diff));
+      return refreshPoints(pontos);
+    }
     
-    // document.getElementById('btn-' + places[copos]).addEventListener('click', () => correto());
+    let r = randomize()
+    pos = r[0];
+    copos = r[1];
 
     replayQuiz(pos, copos);
-    // for (var i=0; i<places.length; i++) {
-    //     if (i != copos) {
-    //         document.getElementById('btn-' + places[i]).addEventListener('click', errado, true);
-    //     }
-    // }
-    
-    // document.getElementById('btn-' + places[copos]).addEventListener('click', correto, true);
 
 })
