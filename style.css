@@ -7,7 +7,8 @@ body {
     background-image: url("dinheiro.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    background-attachment: fixed; 
+    background-attachment: fixed;
+    background-position: center; 
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -97,6 +98,10 @@ label {
 
     .perguntas {
         font-size: 20px;
+    }
+
+    .perguntas-texto > label {
+        font-size: 15px;
     }
 
     .respostas > input[type=button] {
