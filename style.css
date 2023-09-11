@@ -30,7 +30,7 @@ body {
 
 .perguntas {
     margin-top: 50px;
-    margin-left: 40px;
+    margin-left: 25px;
     text-align: left;
     font-size: 40px;
 }
@@ -79,12 +79,6 @@ label {
     font-size: 25px;
 }
 
-.footer > p {
-    font-weight: bolder;
-    color: rgb(0, 0, 0);
-    background-color: white;
-}
-
 @media (max-width: 767px) {
     body {
         justify-content: flex-start;
@@ -93,6 +87,7 @@ label {
     .container-principal {
         width: 85vw;
         height: 98vh;
+        padding: 15px;
     }
 
     .container-principal > h1 {
@@ -101,15 +96,11 @@ label {
     }
 
     .perguntas {
-        font-size: 30px;
-    }
-
-    .resostas {
-        align-content: stretch;
+        font-size: 25px;
     }
 
     .respostas > input[type=button] {
-        width: 90px;
+        width: 70px;
         height: 35px;  
     }
 }
