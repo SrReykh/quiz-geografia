@@ -76,7 +76,7 @@ label {
 }
 
 #pontos {
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .footer > p {
@@ -92,7 +92,7 @@ label {
 
     .container-principal {
         width: 85vw;
-        height: 95vh;
+        height: 98vh;
     }
 
     .container-principal > h1 {
@@ -102,5 +102,14 @@ label {
 
     .perguntas {
         font-size: 30px;
+    }
+
+    .resostas {
+        align-content: stretch;
+    }
+
+    .respostas > input[type=button] {
+        width: 90px;
+        height: 35px;  
     }
 }
